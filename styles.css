@@ -1,0 +1,69 @@
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+}
+.description {
+    margin-bottom: 10px; /* Disminuimos el espacio debajo de la descripción */
+}
+h1 {
+    margin: 40px 0 15px 0;
+}
+.description {
+    font-size: 1.5em; /* Ajusta el tamaño de la fuente; puedes probar valores como 1.5em o 20px */
+    margin: 5px 0; /* Mantiene el margen ajustado */
+    text-align: justify; /* Asegura que el texto esté centrado */
+    width: 70%
+}
+#tooltip {
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    border: 5px solid #9fccd4;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+.legend-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    margin: 0 auto; 
+}
+
+.legend-image {
+    max-width: 50%; /* Adjust the size of the image as needed */
+    height: auto;
+}
+.map-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5px;
+}
+.slider-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#year-slider {
+    width: 100%; /* Ajusta el tamaño del slider */
+    max-width: 1000px;
+}
+.additional-info {
+    font-size: 1.5em; /* Ajusta el tamaño de la fuente */
+    color: #333; /* Color de texto */
+    margin-top: 10px; /* Espacio entre la descripción y la información adicional */
+    text-align: center; /* Centra el texto si lo deseas */
+    max-width: 1000px; /* Limita el ancho para que se vea bien en pantalla */
+}

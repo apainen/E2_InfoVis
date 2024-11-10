@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South America Interactive Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Porcentaje de producción de electricidad a partir de fuentes renovables</h1>
+        <p class="description">
+            El siguiente gráfico presenta como la proporción de energías renovables ha cambiado en el consumo total de energías en diferentes países de América Latina a lo largo de los años.<br><br>
+            Las energías renovables consideradas son de fuentes hidroeléctricas, solares, eólicas, de biomasa y residuos, geotérmicas, undimotrices y mareomotrices.
+            
+        </p>
+        <!-- Slider para seleccionar el año -->
+        <div class="slider-container">
+            <label for="year-slider">Año: <span id="selected-year">2023</span></label>
+            <input type="range" id="year-slider" min="2000" max="2023" value="2023" step="1">
+        </div>
+    
+        <div class="content-wrapper">
+            <div class="info-container">
+                <!-- Aquí puedes agregar información adicional -->
+            </div>
+            
+            <div class="map-container">
+                <svg id="map"></svg>
+                <div id="tooltip"></div>
+            </div>
+        </div>
+        
+        <div class="legend-container">
+            <img src="legend.png" alt="Leyenda: Uso de Energía Renovable" class="legend-image">
+        </div>
+
+        <div class="additional-info">
+            <p>
+            
+            <p>
+            
+            </p>
+        </div>
+
+
+    </div>
+</body>
+</html>
