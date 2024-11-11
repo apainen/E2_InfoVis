@@ -28,6 +28,19 @@ function playYearChangeClick() {
     audio.play();
 }
 
+function calculateAverageProduction(year) {
+    const energyDataForYear = Object.values(energyLookup[year] || {});
+    const sum = energyDataForYear.reduce((acc, value) => acc + value, 0);
+    const avg = energyDataForYear.length ? (sum / energyDataForYear.length).toFixed(2) : 0;
+    return avg;
+}
+
+function updateAverageProduction(year) {
+    const avgProduction = calculateAverageProduction(year);
+    d3.select("#average-production-value").text(`${avgProduction}%`);
+}
+
+
 // carga de datos
 Promise.all([
     d3.json("custom.geo.json"),
@@ -132,13 +145,14 @@ Promise.all([
     yearSlider.on("input", function() {
         const year = +this.value;
         selectedYear.text(year);
-        updateMap(year); 
+        updateMap(year);
+        updateAverageProduction(year);
         playYearChangeClick(); // aca va ek sonido de cambio de año
     });
 
     // aca es el codigo de la leyenda 
-    const legendWidth = 200;
-    const legendHeight = 10;
+    const legendWidth = 250;
+    const legendHeight = 20;
 
     const legend = svg.append("g")
         .attr("transform", `translate(${width - legendWidth - 20}, ${height - 40})`); // pos esquina derecha abajo
@@ -168,21 +182,44 @@ Promise.all([
     legend.append("text")
         .attr("x", 0)
         .attr("y", -5)
-        .text(`${minEnergy}%`)
-        .style("font-size", "12px");
+        .text(`${0}%`)
+        .style("font-size", "24px");
 
     legend.append("text")
         .attr("x", legendWidth)
         .attr("y", -5)
         .attr("text-anchor", "end")
         .text(`${maxEnergy}%`)
-        .style("font-size", "12px");
+        .style("font-size", "24px");
 
     legend.append("text")
         .attr("x", legendWidth / 2)
-        .attr("y", -15)
+        .attr("y", -35)
         .attr("text-anchor", "middle")
-        .style("font-size", "14px")
+        .style("font-size", "21px")
         .style("font-weight", "bold")
         .text("Porcentaje de Energía Renovable");
+    
+    const averageContainer = svg.append("g")
+        .attr("class", "average-container")
+        .attr("transform", `translate(${width - legendWidth - 20}, ${height + 50})`); // Posición debajo de la leyenda
+    
+    averageContainer.append("text")
+        .attr("id", "average-production-value")
+        .attr("text-anchor", "middle")
+        .attr("x", legendWidth / 2)
+        .attr("y", 20)
+        .style("font-size", "40px")
+        .style("fill", "RGB(0, 122, 255)")
+        .style("font-weight", "bold")
+        .text("61.30%");
+    
+    averageContainer.append("text")
+        .attr("class", "average-label")
+        .attr("text-anchor", "middle")
+        .attr("x", legendWidth / 2)
+        .attr("y", 50)
+        .style("font-size", "20px")
+        .style("fill", "black")
+        .text("Promedio producción del año");
 });
