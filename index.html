@@ -1,51 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>South America Interactive Map</title>
+    <title>Proporción de Energías Renovables en América Latina</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script defer src="script.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Porcentaje de producción de electricidad a partir de fuentes renovables</h1>
-        <p class="description">
-            El siguiente gráfico presenta como la proporción de energías renovables ha cambiado en el consumo total de energías en diferentes países de América Latina a lo largo de los años.<br><br>
-            Las energías renovables consideradas son de fuentes hidroeléctricas, solares, eólicas, de biomasa y residuos, geotérmicas, undimotrices y mareomotrices.
-            
-        </p>
-        <!-- Slider para seleccionar el año -->
-        <div class="slider-container">
-            <label for="year-slider">Año: <span id="selected-year">2023</span></label>
-            <input type="range" id="year-slider" min="2000" max="2023" value="2023" step="1">
+        <!-- descripcion de la importancia de la energia renovable -->
+        <div class="left-text">
+            <h2>¿Por qué es importante?</h2>
+            <p>La proporción de energías renovables en el consumo total de energía indica el avance hacia un futuro más sostenible.<br/> <br/> En general, se puede observar una tendencia en crecimiento sobre el uso de energías renovables, esto también es de cierta manera impulsado a los compromisos internacionales de cada país y también la reciente necesidad de reducir las emisiones de carbono.</p>
         </div>
-    
-        <div class="content-wrapper">
-            <div class="info-container">
-                <!-- Aquí puedes agregar información adicional -->
-            </div>
-            
-            <div class="map-container">
-                <svg id="map"></svg>
-                <div id="tooltip"></div>
+
+        <!-- titulo -->
+        <div class="top-text">
+            <h1>Distribución de Energía Renovable en América Latina (2000 - 2023)</h1>
+            <p class="description">Explora cómo ha cambiado la proporción de energías renovables en América Latina a lo largo de los años.</p>
+            <div class="slider-container">
+                <label for="year-slider" style="font-size: 1.5em; color:  #325db2; font-weight: bold;">
+                    Año <span id="selected-year">2023</span>
+                </label>
+                <input type="range" id="year-slider" min="2000" max="2023" value="2023" step="1">
             </div>
         </div>
-        
-        <div class="legend-container">
-            <img src="legend.png" alt="Leyenda: Uso de Energía Renovable" class="legend-image">
+
+        <!-- aca va el mapa, en el centro -->
+        <div class="map-container">
+            <svg id="map"></svg>
+            <div id="tooltip"></div>
         </div>
 
-        <div class="additional-info">
-            <p>
-            
-            <p>
-            
-            </p>
+        <!-- intrucciones de como usar el mapa -->
+        <div class="right-text">
+            <h2>¿Cómo interpretar el mapa?</h2>
+            <p>Haz clic en un país para ver el porcentaje de energía renovable en su consumo. Los colores representan diferentes niveles de uso de energías renovables.</p>
         </div>
 
-
+        <!-- info adicional -->
+        <div class="footer">
+            <p>Basado en datos históricos, observa la evolución y los países que más utilizan energías renovables en América Latina.</p>
+        </div>
     </div>
 </body>
 </html>

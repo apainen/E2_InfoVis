@@ -1,69 +1,180 @@
-
+/* aca tenemos el codigo de todo lo que es la conf de colores y alineacion de la info del grafico*/
+/* estilo de letra y los fondos utilizados*/
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin: 0;
-    padding: 10px;
-}
-.description {
-    margin-bottom: 10px; /* Disminuimos el espacio debajo de la descripción */
-}
-h1 {
-    margin: 40px 0 15px 0;
-}
-.description {
-    font-size: 1.5em; /* Ajusta el tamaño de la fuente; puedes probar valores como 1.5em o 20px */
-    margin: 5px 0; /* Mantiene el margen ajustado */
-    text-align: justify; /* Asegura que el texto esté centrado */
-    width: 70%
-}
-#tooltip {
-    position: absolute;
-    background-color: white;
-    padding: 20px;
-    border: 5px solid #9fccd4;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s;
-}
-.legend-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-    margin: 0 auto; 
+    padding: 0;
+    background-color: #f7f9fc;
 }
 
-.legend-image {
-    max-width: 50%; /* Adjust the size of the image as needed */
-    height: auto;
+.container {
+    display: grid;
+    grid-template-areas:
+        "left-text top-text right-text"
+        "left-text map right-text"
+        "left-text footer right-text";
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
 }
-.map-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 5px;
-}
-.slider-container {
-    margin: 20px 0;
+
+/* aca deberia ir el titulo centrado */
+.top-text {
+    grid-area: top-text;
     text-align: center;
 }
 
-#year-slider {
-    width: 100%; /* Ajusta el tamaño del slider */
-    max-width: 1000px;
+/* titulo del grafico */
+h1 {
+    font-size: 2.2em;
+    color: #333;
+    font-weight: bold;
+    margin: 20px 0;
 }
+
+/* primer texto que iria al lado izquierdo */
+.left-text {
+    grid-area: left-text;
+    text-align: justify;;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* lo que iria en el lado derecho */
+.right-text {
+    grid-area: right-text;
+    text-align: justify;;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* recuadro que contiene al mapa y este iria en el centro para que la info este alrdedor */
+.map-container {
+    grid-area: map;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+}
+
+/* el pie de pagina con un poco de info extra */
+.footer {
+    grid-area: footer;
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 20px;
+    max-width: 800px;
+}
+
+/* conf del tooltip */
+#tooltip {
+    position: absolute;
+    background-color: rgba(50, 50, 50, 0.85);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    pointer-events: none;
+    font-size: 0.9em;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    z-index: 10;
+}
+
+/* conf del slider y del año */
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.slider-container label {
+    font-size: 1.5em;
+    color: #325db2;
+    font-weight: bold;
+}
+
+#selected-year {
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+}
+
+#year-slider {
+    width: 60%;
+    max-width: 400px;
+    appearance: none;
+    height: 10px;
+    background-color: #ddd;
+    border: 2px solid  #325db2;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#year-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color:  #325db2;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* colores y conf de la leyenda  */
+.legend-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.legend-label {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+}
+
+.legend-bar {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 12px;
+    background: linear-gradient(to right, #e0f7fa, #00796b);
+    border-radius: 6px;
+    margin: 0 10px;
+}
+
+.legend-value {
+    font-size: 0.9em;
+    color: #555;
+}
+
 .additional-info {
-    font-size: 1.5em; /* Ajusta el tamaño de la fuente */
-    color: #333; /* Color de texto */
-    margin-top: 10px; /* Espacio entre la descripción y la información adicional */
-    text-align: center; /* Centra el texto si lo deseas */
-    max-width: 1000px; /* Limita el ancho para que se vea bien en pantalla */
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 800px;
 }
